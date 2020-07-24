@@ -89,7 +89,7 @@ class AidenController extends Controller
 
     public function ocpcUp(Request $request)
     {
-        $click_id=$request->input('clickid');
+        $click_id=$request->input('click_id');
         $project_id=$request->input('project_id');
         $conv_type_id=$request->input('conv_type_id');
         if (!empty($click_id)&&!empty($project_id)&&!empty($conv_type_id)){
@@ -102,7 +102,7 @@ class AidenController extends Controller
             $conv->conv_name=$project->name;
             $conv->conv_value=$project->conv_value;
             $conv->keyword=$request->input('keyword');
-            $conv->url=$request->header('referer');
+            $conv->url=$request->input('referer');
             $conv->device=$request->input('device');
             //存入数据库
             $res=$conv->save();

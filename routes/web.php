@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'Auth\LoginController@login');
 Route::middleware(['auth'])->group(function () {
     Route::resource('convs','ConvController');
     Route::get('trans','ConvController@trans')->name('trans');
