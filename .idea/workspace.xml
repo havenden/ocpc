@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="94f04231-2aa1-46ff-be3c-3c25fec19503" name="Default Changelist" comment="" />
+    <list default="true" id="94f04231-2aa1-46ff-be3c-3c25fec19503" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,6 +110,9 @@
       <find>tip</find>
       <find>home</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -456,7 +461,7 @@
     <option name="totallyTimeSpent" value="28463000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="62" y="0" width="1693" height="964" extended-state="0" />
+    <frame x="62" y="0" width="1693" height="964" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="npm" side_tool="true" />
@@ -466,7 +471,7 @@
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.11913358" />
+      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.119277105" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
