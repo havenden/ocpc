@@ -126,17 +126,17 @@ class AidenController extends Controller
                     ]
                 ]);
                  dd($responseData->getBody()->getContents());
-                return response()->header('Access-Control-Allow-Origin', '*')
-            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
-            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, 
-                      X-Requested-With')->json([
+                return response(json_encode([
                     'status'=>$responseData->getStatusCode(),
                     'header'=>$responseData->getHeaders(),
                     'body'=>$responseData->getBody()->getContents(),
-                ]);
+                ]))
+                    ->header('Access-Control-Allow-Origin', '*')
+                    ->header('Access-Control-Allow-Methods', 'POST, GET')
+                    ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
             }
         }else{
-            return response('hello',200)
+            return response(json_encode(['status',0]),200)
                 ->header('Access-Control-Allow-Origin', '*')
                 ->header('Access-Control-Allow-Methods', 'POST, GET')
                 ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
