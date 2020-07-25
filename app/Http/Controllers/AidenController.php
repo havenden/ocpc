@@ -109,32 +109,37 @@ class AidenController extends Controller
             if ($res){
                 $count=Count::findOrFail(1);
                 $client = new Client();
-                $responseDate = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
+                $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
+                    'headers' => [
+                        'username' => $count->name,
+                        'password' => $count->password,
+                    ],
                     'form_params' => [
-                        'header' => [
-                            'username' => $count->name,
-                            'password' => $count->password,
-                        ],
-                        'body'=>[
-                            'source'=>'0',
-                            'data'=>[
-                                'date'=>$convdate,
-                                'click_id'=>$click_id,
-                                'conv_type'=>$conv_type_id,
-                                'conv_name'=>$conv->conv_name,
-                                'conv_value'=>$conv->conv_value,
-                            ]
+                        'source'=>'0',
+                        'data'=>[
+                            'date'=>$convdate,
+                            'click_id'=>$click_id,
+                            'conv_type'=>$conv_type_id,
+                            'conv_name'=>$conv->conv_name,
+                            'conv_value'=>$conv->conv_value,
                         ]
                     ]
                 ]);
-                return response()->json([
+                 dd($responseData->getBody()->getContents());
+                return response()->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, 
+                      X-Requested-With')->json([
                     'status'=>$responseDate->getStatusCode(),
                     'header'=>$responseDate->getHeaders(),
-                    'body'=>$responseDate->getBody(),
+                    'body'=>$responseDate->getBody()->getContents(),
                 ]);
             }
         }else{
-            return response()->json(['status',0]);
+            return response('hello',200)->header('Access-Control-Allow-Origin', '*')
+            ->header('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE')
+            ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, 
+                      X-Requested-With');
         }
 
 
