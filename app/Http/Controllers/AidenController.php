@@ -128,7 +128,7 @@ class AidenController extends Controller
                     ]
                 ]);
                 return response()->json([
-                    'status'=>1,
+                    'status'=>$responseDate->getStatusCode(),
                     'header'=>$responseDate->getHeaders(),
                     'body'=>$responseDate->getBody(),
                 ]);
