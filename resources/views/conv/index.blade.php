@@ -30,7 +30,7 @@
                     <th style="">转化类型</th>
                     <th style="">转化名称</th>
                     <th style="">转化值</th>
-                    <th style="">关键词</th>
+{{--                    <th style="">关键词</th>--}}
                     <th style="">链接</th>
                     <th style="">创建日期</th>
 {{--                    <th>操作</th>--}}
@@ -45,7 +45,7 @@
                     <td>{{ $conv->conv_type_id }}</td>
                     <td>{{ $conv->conv_name }}</td>
                     <td>{{ $conv->conv_value }}</td>
-                    <td>{{ $conv->keyword }}</td>
+{{--                    <td>{{ $conv->keyword }}</td>--}}
                     <td>{{ $conv->url }}</td>
                     <td>{{ $conv->created_at }}</td>
 {{--                    <td data-id="{{ $conv->id }}">--}}

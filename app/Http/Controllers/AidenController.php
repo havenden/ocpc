@@ -109,7 +109,7 @@ class AidenController extends Controller
             if ($res){
                 $count=Count::findOrFail(1);
                 $client = new Client();
-                $responseDate = $client->request('POST', ' https://e.sm.cn/api/uploadConversions', [
+                $responseDate = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
                     'form_params' => [
                         'header' => [
                             'username' => $count->name,
