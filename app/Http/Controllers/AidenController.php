@@ -133,13 +133,15 @@ class AidenController extends Controller
                 ]))
                     ->header('Access-Control-Allow-Origin', '*')
                     ->header('Access-Control-Allow-Methods', 'POST, GET')
-                    ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+                    ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, X-CSRF-TOKEN')
+                    ->header('Access-Control-Allow-Credentials','true');
             }
         }else{
             return response(json_encode(['status',0]),200)
                 ->header('Access-Control-Allow-Origin', '*')
                 ->header('Access-Control-Allow-Methods', 'POST, GET')
-                ->header('Access-Control-Allow-Headers', 'Content-Type, Accept, Authorization, X-Requested-With');
+                ->header('Access-Control-Allow-Headers', 'Origin, Content-Type, Accept, X-CSRF-TOKEN')
+                ->header('Access-Control-Allow-Credentials','true');
         }
 
 
