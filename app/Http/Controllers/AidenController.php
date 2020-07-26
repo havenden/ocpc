@@ -93,43 +93,48 @@ class AidenController extends Controller
         $project_id=$request->input('project_id');
         $conv_type_id=$request->input('conv_type_id');
         if (!empty($click_id)&&!empty($project_id)&&!empty($conv_type_id)){
-            $conv=new Conv();
-            $project=Project::findOrFail($project_id);
-            $convdate=Carbon::now()->toDateString();
-            $conv->date=$convdate;
-            $conv->click_id=$click_id;
-            $conv->conv_type_id=$conv_type_id;
-            $conv->conv_name=$project->name;
-            $conv->conv_value=$project->conv_value;
-            $conv->keyword=$request->input('keyword');
-            $conv->url=$request->input('referer');
-            $conv->device=$request->input('device');
-            //存入数据库
-            $res=$conv->save();
-            if ($res){
-                $count=Count::findOrFail(1);
-                $client = new Client();
-                $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
-                    'headers' => [
-                        'username' => $count->name,
-                        'password' => $count->password,
-                    ],
-                    'form_params' => [
-                        'source'=>'0',
-                        'data'=>[
-                            'date'=>$convdate,
-                            'click_id'=>$click_id,
-                            'conv_type'=>$conv_type_id,
-                            'conv_name'=>$conv->conv_name,
-                            'conv_value'=>$conv->conv_value,
+            $click_id_count=Conv::where('click_id',$click_id)->count();
+            if ($click_id_count>0){
+                return response()->json(['status',0]);
+            }else{
+                $conv=new Conv();
+                $project=Project::findOrFail($project_id);
+                $convdate=Carbon::now()->toDateString();
+                $conv->date=$convdate;
+                $conv->click_id=$click_id;
+                $conv->conv_type_id=$conv_type_id;
+                $conv->conv_name=$project->name;
+                $conv->conv_value=$project->conv_value;
+                $conv->keyword=$request->input('keyword');
+                $conv->url=$request->input('referer');
+                $conv->device=$request->input('device');
+                //存入数据库
+                $res=$conv->save();
+                if ($res){
+                    $count=Count::findOrFail(1);
+                    $client = new Client();
+                    $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
+                        'headers' => [
+                            'username' => $count->name,
+                            'password' => $count->password,
+                        ],
+                        'form_params' => [
+                            'source'=>'0',
+                            'data'=>[
+                                'date'=>$convdate,
+                                'click_id'=>$click_id,
+                                'conv_type'=>$conv_type_id,
+                                'conv_name'=>$conv->conv_name,
+                                'conv_value'=>$conv->conv_value,
+                            ]
                         ]
-                    ]
-                ]);
-                return response()->json([
-                    'status'=>$responseData->getStatusCode(),
-                    'header'=>$responseData->getHeaders(),
-                    'body'=>$responseData->getBody()->getContents(),
-                ]);
+                    ]);
+                    return response()->json([
+                        'status'=>$responseData->getStatusCode(),
+                        'header'=>$responseData->getHeaders(),
+                        'body'=>$responseData->getBody()->getContents(),
+                    ]);
+                }
             }
         }else{
             return response()->json(['status',0]);
