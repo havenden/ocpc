@@ -16,5 +16,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>['api']],function(){
     Route::any('ocpctrans','AidenController@ocpcUp');
+    Route::any('ocpctranstest','AidenController@ocpcUpTest');
 
 });
