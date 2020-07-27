@@ -146,27 +146,25 @@ class AidenController extends Controller
         //test
         $count=Count::findOrFail(1);
         $client = new Client();
-        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
-            'headers' => [
-                'Content-Type' => 'application/json',
-                'username' => urlencode($count->name),
-                'password' => $count->password,
-            ],
-            'form_params' => [
-                'source'=>'0',
-                'data'=>[
-                    'date'=>'2020-07-24',
-                    'click_id'=>'123456',
-                    'conv_type'=>13,
-                    'conv_name'=>'对话',
-                    'conv_value'=>1,
+        $headers=['Content-Type'=>'application/json'];
+        $body=json_encode(
+        	[
+                'header'=>[
+			        'username' => $count->name,
+                    'password' => $count->password,
+                ],
+                'body'=>[
+                    'source'=>0,
+	                'data'=>[
+	                    'date'=>'2020-07-26',
+	                    'click_id'=>'9237767034964592095',
+	                    'conv_type'=>13,
+	                    'conv_name'=>'对话',
+	                    'conv_value'=>'1',
+	                ]
                 ]
-            ]
-        ]);
-        return response()->json([
-            'status'=>$responseData->getStatusCode(),
-            'header'=>$responseData->getHeaders(),
-            'body'=>$responseData->getBody()->getContents(),
-        ]);
+            ]);
+        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions',$headers,$body);
+        return $responseData->getBody();
     }
 }
