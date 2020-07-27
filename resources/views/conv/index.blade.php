@@ -47,7 +47,7 @@
                     <td>{{ $conv->conv_value }}</td>
 {{--                    <td>{{ $conv->keyword }}</td>--}}
                     <td>{{ $conv->url }}</td>
-                    <td>{{ $conv->status==0?'<span class=\"text-success\">成功</span>':'<span class=\"text-danger\">失败</span>' }}</td>
+                    <td><span class="{{ $conv->status==0?'text-success':'text-danger' }}">{{ $conv->status==0?'成功':'失败' }}</span></td>
                     <td>{{ $conv->created_at }}</td>
 {{--                    <td data-id="{{ $conv->id }}">--}}
 {{--                        <a href="{{ route('conv.edit',$conv->id) }}" style="margin-right: 20px;" title="编辑" data-toggle="tooltip" data-placement="top"><i class="fas fa-edit"></i></a>--}}
