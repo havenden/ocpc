@@ -113,19 +113,24 @@ class AidenController extends Controller
                 if ($res){
                     $count=Count::findOrFail(1);
                     $client = new Client();
+                    $headers=['Content-Type'=>'application/json;charset=UTF-8'];
                     $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
-                        'headers' => [
-                            'username' => $count->name,
-                            'password' => $count->password,
-                        ],
-                        'form_params' => [
-                            'source'=>'0',
-                            'data'=>[
-                                'date'=>$convdate,
-                                'click_id'=>$click_id,
-                                'conv_type'=>$conv_type_id,
-                                'conv_name'=>$conv->conv_name,
-                                'conv_value'=>$conv->conv_value,
+                        'json' => [
+                            'header'=>[
+                                'username' => $count->name,
+                                'password' => $count->password,
+                            ],
+                            'body'=>[
+                                'source'=>0,
+                                'data'=>[
+                                    [
+                                        'date'=>$convdate,
+                                        'click_id'=>$click_id,
+                                        'conv_type'=>$conv_type_id,
+                                        'conv_name'=>$conv->conv_name,
+                                        'conv_value'=>$conv->conv_value,
+                                    ],
+                                ]
                             ]
                         ]
                     ]);
@@ -146,25 +151,27 @@ class AidenController extends Controller
         //test
         $count=Count::findOrFail(1);
         $client = new Client();
-        $headers=['Content-Type'=>'application/json'];
-        $body=json_encode(
-        	[
-                'header'=>[
-			        'username' => $count->name,
-                    'password' => $count->password,
-                ],
-                'body'=>[
-                    'source'=>0,
-	                'data'=>[
-	                    'date'=>'2020-07-26',
-	                    'click_id'=>'9237767034964592095',
-	                    'conv_type'=>13,
-	                    'conv_name'=>'对话',
-	                    'conv_value'=>'1',
-	                ]
+        $headers=['Content-Type'=>'application/json;charset=UTF-8'];
+        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions',[
+            'json' => [
+            'header'=>[
+                'username' => $count->name,
+                'password' => $count->password,
+            ],
+            'body'=>[
+                'source'=>0,
+                'data'=>[
+                    [
+                        'date'=>'2020-07-27',
+                        'click_id'=>'6396390499011787447',
+                        'conv_type'=>13,
+                        'conv_name'=>'对话',
+                        'conv_value'=>'1',
+                    ],
                 ]
-            ]);
-        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions',$headers,$body);
+            ]
+        ]
+        ]);
         return $responseData->getBody();
     }
 }
