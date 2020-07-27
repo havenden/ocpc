@@ -105,6 +105,33 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <strong>Copyright &copy; 2020.</strong> All rights reserved.
     </footer>
 </div>
+<div class="modal fade" id="passwordChangeModal" tabindex="-1" role="dialog" aria-labelledby="passwordChangeModalTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+        <form action="{{ route('home.password') }}" method="post" id="passwordChangeModalForm" class="members-form form-horizontal w-100">
+                {{csrf_field()}}
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="passwordChangeModalTitle">修改密码</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body" id=passwordChangeTable">
+                    <div class="form-group row">
+                        <label for="grade" class="col-form-label col-sm-2">新密码</label>
+                        <div class="col-sm-10 mb-0">
+                            <input type="password" name="password" class="form-control" placeholder="新密码">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">关闭</button>
+                    <button type="submit" class="btn btn-success">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 <!-- ./wrapper -->
 
 <!-- REQUIRED SCRIPTS -->

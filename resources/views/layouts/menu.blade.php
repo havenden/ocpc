@@ -52,7 +52,7 @@
             </a>
         </li>
         <li class="nav-item">
-            <a href="" class="nav-link {{Request::is('gh*')?'active':''}}">
+            <a href="" class="nav-link {{Request::is('gh*')?'active':''}}"  data-toggle="modal"  data-target="#passwordChangeModal">
                 <i class="nav-icon fas fa-list-alt"></i>
                 <p>
                     修改密码

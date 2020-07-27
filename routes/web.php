@@ -22,6 +22,7 @@ Route::get('/', 'Auth\LoginController@showLoginForm');
 Route::middleware(['auth'])->group(function () {
     Route::resource('convs','ConvController');
     Route::get('trans','ConvController@trans')->name('trans');
+    Route::post('change-password','HomeController@password')->name('home.password');
     Route::resource('conv_type','ConvTypeController');
     Route::resource('count','CountController');
     Route::resource('project','ProjectController');
