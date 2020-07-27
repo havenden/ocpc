@@ -139,7 +139,33 @@ class AidenController extends Controller
         }else{
             return response()->json(['status',0]);
         }
+    }
 
-
+    public function ocpcUpTest()
+    {
+        //test
+        $count=Count::findOrFail(1);
+        $client = new Client();
+        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
+            'headers' => [
+                'username' => urlencode($count->name),
+                'password' => $count->password,
+            ],
+            'form_params' => [
+                'source'=>'0',
+                'data'=>[
+                    'date'=>'2020-07-24',
+                    'click_id'=>'123456',
+                    'conv_type'=>13,
+                    'conv_name'=>'对话',
+                    'conv_value'=>1,
+                ]
+            ]
+        ]);
+        return response()->json([
+            'status'=>$responseData->getStatusCode(),
+            'header'=>$responseData->getHeaders(),
+            'body'=>$responseData->getBody()->getContents(),
+        ]);
     }
 }
