@@ -89,8 +89,6 @@ class AidenController extends Controller
 
     public function ocpcUp(Request $request)
     {
-        $datadddd='{"header":{"desc":"执行成功","status":0},"statistics":{"totalCount":1,"successCount":1,"duplicateCount":0,"invalidCount":0,"errorMessages":[]}}';
-        dd(json_decode($datadddd)->header->desc);
         $click_id=$request->input('click_id');
         $project_id=$request->input('project_id');
         $conv_type_id=$request->input('conv_type_id');
