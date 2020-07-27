@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">转化明细<span class="text-muted">（{{ $convs->count() }}）</span></h3>
+            <h3 class="card-title">转化明细<span class="text-muted">（{{ $convs->total() }}）</span></h3>
 {{--            <div class="card-tools">--}}
 {{--                <form action="{{ route('user.search') }}" method="get" id="search-form">--}}
 {{--                    {{csrf_field()}}--}}
