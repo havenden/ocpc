@@ -148,6 +148,7 @@ class AidenController extends Controller
         $client = new Client();
         $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions', [
             'headers' => [
+                'Content-Type' => 'application/json',
                 'username' => urlencode($count->name),
                 'password' => $count->password,
             ],
