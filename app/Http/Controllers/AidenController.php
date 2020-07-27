@@ -149,29 +149,29 @@ class AidenController extends Controller
     public function ocpcUpTest()
     {
         //test
-        $count=Count::findOrFail(1);
-        $client = new Client();
-        $headers=['Content-Type'=>'application/json;charset=UTF-8'];
-        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions',[
-            'json' => [
-            'header'=>[
-                'username' => $count->name,
-                'password' => $count->password,
-            ],
-            'body'=>[
-                'source'=>0,
-                'data'=>[
-                    [
-                        'date'=>'2020-07-27',
-                        'click_id'=>'6396390499011787447',
-                        'conv_type'=>13,
-                        'conv_name'=>'对话',
-                        'conv_value'=>'1',
-                    ],
-                ]
-            ]
-        ]
-        ]);
-        return $responseData->getBody();
+//        $count=Count::findOrFail(1);
+//        $client = new Client();
+//        $headers=['Content-Type'=>'application/json;charset=UTF-8'];
+//        $responseData = $client->request('POST', 'https://e.sm.cn/api/uploadConversions',[
+//            'json' => [
+//                'header'=>[
+//                    'username' => $count->name,
+//                    'password' => $count->password,
+//                ],
+//                'body'=>[
+//                    'source'=>0,
+//                    'data'=>[
+//                        [
+//                            'date'=>'2020-07-27',
+//                            'click_id'=>'6396390499011787447',
+//                            'conv_type'=>13,
+//                            'conv_name'=>'对话',
+//                            'conv_value'=>'1',
+//                        ],
+//                    ]
+//                ]
+//            ]
+//        ]);
+//        return $responseData->getBody();
     }
 }
