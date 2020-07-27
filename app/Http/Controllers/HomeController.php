@@ -46,7 +46,9 @@ class HomeController extends Controller
             [ 'date','>=',(new Carbon('last month'))->startOfMonth()->toDateString()],
             [ 'date','<=',(new Carbon('last month'))->endOfMonth()->toDateString()],
         ])->count();
-        return view('home');
+        return view('home',[
+            'convsCount'=>$convsCount
+        ]);
     }
 
     public function password(Request $request)
