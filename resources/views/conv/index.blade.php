@@ -30,8 +30,8 @@
                     <th style="">转化类型</th>
                     <th style="">转化名称</th>
                     <th style="">转化值</th>
-{{--                    <th style="">关键词</th>--}}
                     <th style="">链接</th>
+                    <th style="">回传状态</th>
                     <th style="">创建日期</th>
 {{--                    <th>操作</th>--}}
                 </tr>
@@ -47,6 +47,7 @@
                     <td>{{ $conv->conv_value }}</td>
 {{--                    <td>{{ $conv->keyword }}</td>--}}
                     <td>{{ $conv->url }}</td>
+                    <td>{{ $conv->status==0?'<span class=\"text-success\">成功</span>':'<span class=\"text-danger\">失败</span>' }}</td>
                     <td>{{ $conv->created_at }}</td>
 {{--                    <td data-id="{{ $conv->id }}">--}}
 {{--                        <a href="{{ route('conv.edit',$conv->id) }}" style="margin-right: 20px;" title="编辑" data-toggle="tooltip" data-placement="top"><i class="fas fa-edit"></i></a>--}}
