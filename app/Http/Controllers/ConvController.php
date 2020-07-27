@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Conv;
+use App\ConvType;
 use Illuminate\Http\Request;
 
 class ConvController extends Controller
@@ -15,6 +16,7 @@ class ConvController extends Controller
     public function index()
     {
         return view('conv.index',[
+            'conv_types'=>ConvType::pluck('name','id')->toArray(),
             'convs'=>Conv::orderBy('id','desc')->paginate(10)
         ]);
     }

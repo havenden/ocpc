@@ -4,7 +4,7 @@
     @include('layouts.tip')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">账户<span class="text-muted">（{{ $counts->count() }}）</span><a href="{{ route('count.create') }}" style="margin-left: 10px;">添加</a></h3>
+            <h3 class="card-title">账户<span class="text-muted">（{{ $counts->count() }}）</span><a href="{{ route('count.create') }}" class="d-none" style="margin-left: 10px;">添加</a><span class="text-danger small">暂未开通多账户</span></h3>
 {{--            <div class="card-tools">--}}
 {{--                <form action="{{ route('user.search') }}" method="get" id="search-form">--}}
 {{--                    {{csrf_field()}}--}}

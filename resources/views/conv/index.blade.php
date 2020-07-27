@@ -42,7 +42,7 @@
                 <tr>
                     <td>{{ $conv->date }}</td>
                     <td>{{ $conv->click_id }}</td>
-                    <td>{{ $conv->conv_type_id }}</td>
+                    <td>{{ isset($conv_types[$conv->conv_type_id])?$conv_types[$conv->conv_type_id]:$conv->conv_type_id }}</td>
                     <td>{{ $conv->conv_name }}</td>
                     <td>{{ $conv->conv_value }}</td>
 {{--                    <td>{{ $conv->keyword }}</td>--}}

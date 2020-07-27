@@ -3,7 +3,7 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">项目 <span class="text-muted">（{{ $projects->count() }}）</span> <a href="{{ route('project.create') }}" style="margin-left: 10px;">添加</a></h3>
+            <h3 class="card-title">项目 <span class="text-muted">（{{ $projects->count() }}）</span> <a href="{{ route('project.create') }}" style="margin-left: 10px;">添加</a><span class="text-danger small">请与api后台的转化计划保持一致，并联系技术统一转化定义</span></h3>
 
         </div>
         <!-- /.card-header -->
