@@ -15,7 +15,7 @@ class ConvController extends Controller
     public function index()
     {
         return view('conv.index',[
-            'convs'=>Conv::orderBy('id','desc')->paginate(18)
+            'convs'=>Conv::orderBy('id','desc')->paginate(10)
         ]);
     }
 
