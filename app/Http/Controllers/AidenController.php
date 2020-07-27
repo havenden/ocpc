@@ -110,6 +110,7 @@ class AidenController extends Controller
                 $conv->keyword=$request->input('keyword');
                 $conv->url=$request->input('referer');
                 $conv->device=$request->input('device');
+                $conv->status=1;
                 //存入数据库
                 $res=$conv->save();
                 if ($res){
