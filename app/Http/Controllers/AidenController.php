@@ -136,7 +136,7 @@ class AidenController extends Controller
                         ]
                     ]);
                     $result=json_decode($responseData->getBody()->getContents());
-                    $conv->status=!empty($result->header->status)?$result->header->status:1;
+                    $conv->status=($result->header->status==0)?$result->header->status:1;
                     $conv->save();
                     return response($result->header->desc);
                 }
